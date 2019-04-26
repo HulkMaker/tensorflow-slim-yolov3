@@ -6,9 +6,9 @@ Implementation of YOLO v3 object detector in Tensorflow (TF-Slim). This reposito
 - [x] Basic working demo
 - [x] Non max suppression on the both `GPU` and `CPU` is supported
 - [x] Training pipeline
-- [x] Compute COCO mAP
+- [x] Compute COCO mAP with cocoapi
 
-YOLO paper is quick hard to understand, along side that paper. This repo enables you to have a quick understanding of YOLO Algorithmn.
+YOLO paper is hard to understand, along side that paper. This repo enables you to have a quick understanding of YOLO Algorithmn.
 
 
 ## part 2. Quick start
@@ -143,29 +143,11 @@ In tensorflow, we can simply implement non maximum suppression algorithm like th
 for i in range(num_classes):
     tf.image.non_max_suppression(boxes, score[:,i], iou_threshold=0.5) 
  ```
- 
+
 Non-max suppression uses the very important function called **"Intersection over Union"**, or IoU. Here is an exmaple of non maximum suppression algorithm: on input the aglorithm receive 4 overlapping bounding boxes, and the output returns only one
 
 ![image](./docs/images/iou.png)
 
-Welecome to discuss with me.
-
-## part 5. Other Implementations
-
-[- **`YOLOv3_TensorFlow`**](https://github.com/wizyoung/YOLOv3_TensorFlow)
-
-[- **`Implementing YOLO v3 in Tensorflow (TF-Slim)`**](https://itnext.io/implementing-yolo-v3-in-tensorflow-tf-slim-c3c55ff59dbe)
-
-[- **`Object Detection using YOLOv2 on Pascal VOC2012`**](https://fairyonice.github.io/Part_1_Object_Detection_with_Yolo_for_VOC_2014_data_anchor_box_clustering.html)
-
-[-**`Understanding YOLO`**](https://hackernoon.com/understanding-yolo-f5a74bbc7967)
-
-[-**`YOLOv3目标检测有了TensorFlow实现，可用自己的数据来训练`**](https://mp.weixin.qq.com/s/cq7g1-4oFTftLbmKcpi_aQ)<br>
-
-[- `学员分享 | 小哥哥和用YOLOv3做目标检测的故事「文末送课」`](https://mp.weixin.qq.com/s/dFiOkUsal62EoME52Iw-uQ)
-
-[-`目标检测|YOLOv2原理与实现(附YOLOv3)`](https://zhuanlan.zhihu.com/p/35325884)
-
-[-` YOLOv2は、2016年12月25日時点の、速度、精度ともに世界最高のリアルタイム物体検出手法です。`](https://github.com/leetenki/YOLOv2/blob/master/YOLOv2.md)
-
-[-` 知乎专栏-目标检测yolov2`](https://zhuanlan.zhihu.com/p/35325884)
+ ## part 5. How to calculate mAP with cocoapi ?
+ 
+run command `python coco_predict_gpu.py` to get final evaluate result on cocoapi.
